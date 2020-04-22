@@ -10,7 +10,7 @@ import manifest from "./manifest";
 import figma from "./figma";
 import React from "react";
 import { backgrounds } from "./utils/backgrounds";
-import { Button, Box } from "theme-ui";
+import { Button, Box, Flex, Select } from "theme-ui";
 
 const conversionRate = 1000;
 
@@ -22,12 +22,34 @@ const App = () => {
 
   return (
     <Box sx={{ width: "100vw", height: "100vh" }}>
-      <Button
-        sx={{ position: "fixed", zIndex: 1, m: 3 }}
-        onClick={() => setSceneId(encodeString("0:1"))}
+      <Flex
+        sx={{
+          bg: "background",
+          borderRadius: 8,
+          bottom: 0,
+          m: 3,
+          p: 2,
+          position: "fixed",
+          zIndex: 1,
+          justifyContent: "space-between"
+        }}
       >
-        {currentScene ? "Home" : "Start"}
-      </Button>
+        <Button onClick={() => setSceneId(encodeString("0:1"))} mr={2}>
+          {currentScene ? "Home" : "Start"}
+        </Button>
+        <Select
+          sx={{ pr: 5 }}
+          onChange={event => setSceneId(event.target.value)}
+        >
+          {figma
+            .filter(node => node.nodeType === "page")
+            .map(scene => (
+              <option key={scene.id} value={scene.id}>
+                {scene.name}
+              </option>
+            ))}
+        </Select>
+      </Flex>
       {currentScene && (
         <Scene vrModeUi={{ enabled: true }}>
           <Entity
