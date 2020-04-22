@@ -8,14 +8,16 @@ import {
 } from "use-query-params";
 import manifest from "./manifest";
 import figma from "./figma";
-import React from "react";
+import React, { useState } from "react";
 import { backgrounds } from "./utils/backgrounds";
 import { Button, Box, Flex, Select } from "theme-ui";
 
-const conversionRate = 1000;
+const sizeConversion = 1000;
 
 const App = () => {
   const [sceneId, setSceneId] = useQueryParam("scene", StringParam);
+  const [cursor, setCursor] = useState(true);
+
   const currentScene = figma.find(
     node => node.nodeType === "page" && node.id === sceneId
   );
@@ -49,6 +51,9 @@ const App = () => {
               </option>
             ))}
         </Select>
+        <Button variant="secondary" ml={2} onClick={() => setCursor(!cursor)}>
+          {cursor ? "Hide cursor" : "Show cursor"}
+        </Button>
       </Flex>
       {currentScene && (
         <Scene vrModeUi={{ enabled: true }}>
@@ -75,8 +80,8 @@ const App = () => {
                   key={plane.id}
                   geometry={{
                     primitive: "plane",
-                    width: plane.width / conversionRate,
-                    height: plane.height / conversionRate
+                    width: plane.width / sizeConversion,
+                    height: plane.height / sizeConversion
                   }}
                   material={{ src: src }}
                   position={planeManifest.position}
@@ -97,17 +102,20 @@ const App = () => {
                 />
               );
             })}
+
           <Entity primitive="a-camera">
-            <Entity
-              primitive="a-cursor"
-              animation__click={{
-                property: "scale",
-                startEvents: "click",
-                from: "0.1 0.1 0.1",
-                to: "1 1 1",
-                dur: 150
-              }}
-            />
+            {cursor && (
+              <Entity
+                primitive="a-cursor"
+                animation__click={{
+                  property: "scale",
+                  startEvents: "click",
+                  from: "0.1 0.1 0.1",
+                  to: "1 1 1",
+                  dur: 150
+                }}
+              />
+            )}
           </Entity>
         </Scene>
       )}
