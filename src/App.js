@@ -6,31 +6,37 @@ import {
   encodeString,
   decodeString
 } from "use-query-params";
-import dome from "./images/oculus_dome.jpg";
 import manifest from "./manifest";
 import figma from "./figma";
 import React from "react";
+import { backgrounds } from "./utils/backgrounds";
 
 const conversionRate = 1000;
 
 const App = () => {
-  const [scene, setScene] = useQueryParam("scene", StringParam);
+  const [sceneId, setSceneId] = useQueryParam("scene", StringParam);
+  const currentScene = figma.find(
+    node => node.nodeType === "page" && node.id === sceneId
+  );
 
   return (
     <div>
       <button
         style={{ position: "fixed", zIndex: 1 }}
-        onClick={() => setScene(encodeString("0:1"))}
+        onClick={() => setSceneId(encodeString("0:1"))}
       >
         Home
       </button>
       <Scene vrModeUi={{ enabled: true }}>
-        <Entity primitive="a-sky" src={dome} />
+        <Entity
+          primitive="a-sky"
+          src={backgrounds[manifest.scenes[currentScene.name].background]}
+        />
         {figma
           .filter(
             node =>
               node.nodeType === "frame" &&
-              node.parent.id === decodeString(scene)
+              node.parent.id === decodeString(sceneId)
           )
           .map(plane => {
             const planeManifest = manifest.planes[plane.name];
@@ -53,7 +59,7 @@ const App = () => {
                 rotation={planeManifest.rotation}
                 events={{
                   click: () =>
-                    planeManifest.target && setScene(encodeString("28:31"))
+                    planeManifest.target && setSceneId(encodeString("28:31"))
                 }}
               />
             );

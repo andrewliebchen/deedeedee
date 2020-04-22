@@ -6,7 +6,7 @@ export default {
       background: "dome"
     },
     "Page 2": {
-      background: "dome"
+      background: "office"
     }
   },
   planes: {
