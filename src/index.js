@@ -1,11 +1,10 @@
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { QueryParamProvider } from "use-query-params";
+import { ThemeProvider } from "theme-ui";
+import * as serviceWorker from "./utils/serviceWorker";
+import App from "./components/App";
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import * as serviceWorker from "./serviceWorker";
-import { QueryParamProvider } from "use-query-params";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import { ThemeProvider } from "theme-ui";
 import theme from "./utils/theme";
 
 ReactDOM.render(
