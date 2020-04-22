@@ -10,7 +10,7 @@ export default {
     }
   },
   planes: {
-    "Frame 1": {
+    "AUI Tablet": {
       position: {
         x: 0,
         y: 1.5,
@@ -18,9 +18,10 @@ export default {
       },
       rotation: {
         x: -8
-      }
+      },
+      target: "Page 2"
     },
-    "Frame 2": {
+    "AUI Bar": {
       position: {
         x: 0,
         y: 1.2,
@@ -28,8 +29,14 @@ export default {
       },
       rotation: {
         x: -48
-      },
-      target: "Page 2"
+      }
+    },
+    Dialog: {
+      position: {
+        x: 0,
+        y: 1.5,
+        z: -1.2
+      }
     }
   }
 };

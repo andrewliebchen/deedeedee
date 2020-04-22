@@ -10,7 +10,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <QueryParamProvider ReactRouterRoute={Route}>
-        <App />
+        <Route path="/" component={App} />
       </QueryParamProvider>
     </Router>
   </React.StrictMode>,

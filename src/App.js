@@ -20,9 +20,9 @@ const App = () => {
     <div>
       <button
         style={{ position: "fixed", zIndex: 1 }}
-        onClick={() => setScene(encodeString("28:31"))}
+        onClick={() => setScene(encodeString("0:1"))}
       >
-        click
+        Home
       </button>
       <Scene vrModeUi={{ enabled: true }}>
         <Entity primitive="a-sky" src={dome} />
