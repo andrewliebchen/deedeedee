@@ -5,14 +5,18 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { QueryParamProvider } from "use-query-params";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { ThemeProvider } from "theme-ui";
+import theme from "./utils/theme";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <QueryParamProvider ReactRouterRoute={Route}>
-        <Route path="/" component={App} />
-      </QueryParamProvider>
-    </Router>
+    <ThemeProvider theme={theme}>
+      <Router>
+        <QueryParamProvider ReactRouterRoute={Route}>
+          <Route path="/" component={App} />
+        </QueryParamProvider>
+      </Router>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

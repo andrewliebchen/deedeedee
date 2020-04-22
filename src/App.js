@@ -10,6 +10,7 @@ import manifest from "./manifest";
 import figma from "./figma";
 import React from "react";
 import { backgrounds } from "./utils/backgrounds";
+import { Button, Box } from "theme-ui";
 
 const conversionRate = 1000;
 
@@ -20,13 +21,13 @@ const App = () => {
   );
 
   return (
-    <div>
-      <button
-        style={{ position: "fixed", zIndex: 1 }}
+    <Box sx={{ width: "100vw", height: "100vh" }}>
+      <Button
+        sx={{ position: "fixed", zIndex: 1, m: 3 }}
         onClick={() => setSceneId(encodeString("0:1"))}
       >
         Home
-      </button>
+      </Button>
       <Scene vrModeUi={{ enabled: true }}>
         <Entity
           primitive="a-sky"
@@ -77,7 +78,7 @@ const App = () => {
           />
         </Entity>
       </Scene>
-    </div>
+    </Box>
   );
 };
 
