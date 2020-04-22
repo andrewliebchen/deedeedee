@@ -1,4 +1,4 @@
-// TODO: Add position helpers
+import { AUI, OCUI } from "./utils/presets";
 
 export default {
   scenes: {
@@ -11,32 +11,14 @@ export default {
   },
   planes: {
     "AUI Tablet": {
-      position: {
-        x: 0,
-        y: 1.5,
-        z: -1
-      },
-      rotation: {
-        x: -8
-      },
+      ...AUI.tablet,
       target: "Page 2"
     },
     "AUI Bar": {
-      position: {
-        x: 0,
-        y: 1.2,
-        z: -1
-      },
-      rotation: {
-        x: -48
-      }
+      ...AUI.bar
     },
     Dialog: {
-      position: {
-        x: 0,
-        y: 1.5,
-        z: -1.2
-      }
+      ...OCUI.dialog
     }
   }
 };
