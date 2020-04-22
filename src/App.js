@@ -41,6 +41,7 @@ const App = () => {
         </Button>
         <Select
           sx={{ pr: 5 }}
+          value={sceneId}
           onChange={event => setSceneId(event.target.value)}
         >
           {figma
