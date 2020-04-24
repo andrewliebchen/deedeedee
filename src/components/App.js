@@ -34,6 +34,7 @@ const App = () => {
           <Entity
             primitive="a-sky"
             src={backgrounds[manifest.scenes[currentScene.name].background]}
+            rotation={{ y: -90 }}
           />
           {figma
             .filter(
@@ -78,6 +79,9 @@ const App = () => {
             })}
 
           <Entity primitive="a-camera">{cursor && <Cursor />}</Entity>
+
+          <Entity primitive="oculus-touch-controls" hand="left" />
+          <Entity primitive="oculus-touch-controls" hand="right" />
         </Scene>
       )}
     </Box>

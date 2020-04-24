@@ -6,17 +6,17 @@ export const AUI = {
       z: -1
     },
     rotation: {
-      x: -8
+      x: -21
     }
   },
   bar: {
     position: {
       x: 0,
-      y: 1.2,
-      z: -1
+      y: 1.05,
+      z: -0.8416
     },
     rotation: {
-      x: -48
+      x: -42
     }
   }
 };
@@ -25,8 +25,8 @@ export const OCUI = {
   dialog: {
     position: {
       x: 0,
-      y: 1.5,
-      z: -1.2
+      y: 1.65,
+      z: -1.35
     }
   }
 };
