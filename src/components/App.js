@@ -46,9 +46,9 @@ const App = () => {
               const planeManifest = manifest.planes[plane.name];
 
               const buffer = new Uint8Array(Object.values(plane.bytes));
-              const src = `data:image/jpeg;base64,${Buffer.from(
-                buffer
-              ).toString("base64")}`;
+              const src = `data:image/png;base64,${Buffer.from(buffer).toString(
+                "base64"
+              )}`;
 
               return (
                 <Entity
@@ -58,7 +58,10 @@ const App = () => {
                     width: plane.width / sizeConversion,
                     height: plane.height / sizeConversion
                   }}
-                  material={{ src: src }}
+                  material={{
+                    src: src,
+                    transparent: true
+                  }}
                   position={planeManifest.position}
                   rotation={planeManifest.rotation}
                   events={{
