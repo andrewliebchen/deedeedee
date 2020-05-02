@@ -83,8 +83,11 @@ const App = () => {
 
           <Entity primitive="a-camera">{cursor && <Cursor />}</Entity>
 
-          <Entity primitive="oculus-touch-controls" hand="left" />
-          <Entity primitive="oculus-touch-controls" hand="right" />
+          <Entity primitive="tracked-controls" hand="left" />
+          <Entity primitive="tracked-controls" hand="right" />
+
+          <Entity trackedControls="hand: left" />
+          <Entity trackedControls={{ hand: "right" }} />
         </Scene>
       )}
     </Box>

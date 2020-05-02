@@ -2,23 +2,20 @@ import { AUI, OCUI } from "./utils/presets";
 
 export default {
   scenes: {
-    "Page 1": {
-      background: "dome"
-    },
-    "Page 2": {
-      background: "office"
-    }
+    "Scene 1": { background: "dome" },
+    "Scene 2": { background: "dome" },
+    "Scene 3": { background: "dome" },
+    "Scene 4": { background: "dome" },
+    "Scene 5": { background: "dome" }
   },
   planes: {
-    "AUI Tablet": {
-      ...AUI.tablet,
-      target: "Page 2"
-    },
     "AUI Bar": {
       ...AUI.bar
     },
-    Dialog: {
-      ...OCUI.dialog
-    }
+    "Sharing tablet": { ...AUI.tablet },
+    "Camera roll": { ...AUI.tablet },
+    "Max view": { ...OCUI.dialog },
+    "USS destinations": { ...OCUI.dialog },
+    "Newsfeed Composer": { ...OCUI.dialog }
   }
 };
